@@ -111,6 +111,8 @@ function LoadGame(){
                 choices.push(levelinfo.options[i])
             }
 
+            shuffle(choices)
+
             for (let i = 0; i < choices.length; i++) {
                 divlevel.innerHTML += "<button>"+choices[i]+"</button>"
             }
@@ -285,3 +287,26 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
+
+/**
+ * Shuffles arrays
+ * @param {*} array Any array
+ * @returns Shuffled parameter array
+ */
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
